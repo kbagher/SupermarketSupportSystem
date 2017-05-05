@@ -10,6 +10,7 @@ ____
 		- Java
 		- [Unirest](http://unirest.io) framework
 		- [Gson](https://github.com/google/gson) framework
+		- [DynamicReports](http://www.dynamicreports.org) framework
 		- Maven
 - **Folders and files**
 	- api
