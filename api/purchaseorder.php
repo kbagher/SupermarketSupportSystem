@@ -13,6 +13,8 @@ class purchaseorder
 
     private function addPurchaseOrderItemRecord($con, $purchase_order_id, $product_id, $quantity, $total)
     {
+        if ($quantity<0)
+            return false;
         $query = "insert into purchase_order_item (purchase_order, product, item_quantity,item_total) values($purchase_order_id,$product_id,$quantity,$total) ";
         $result = mysqli_query($con, $query);
         if (!$result)
