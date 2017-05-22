@@ -139,6 +139,7 @@ public class Menu {
 
         if (back)
             System.out.printf("\t" + "%-40s %d %n", "Back to main menu", suppliers.size());
+
         System.out.println("\n\t" + String.format("%40s", "*").replace(' ', '*'));
         System.out.print("\tYour choice : ");
 

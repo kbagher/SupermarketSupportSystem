@@ -43,15 +43,24 @@ public class ManagerMenu extends Menu {
         }
     }
 
-    private void salesReport(){
+    private void salesReport() {
         String fromDateString = displayDateInputMessage("Enter From date");
-        if(fromDateString == "") return;
+        if (fromDateString == "") return;
 
         String toDateString = displayDateInputMessage("Enter To date");
-        if(toDateString == "") return;
+        if (toDateString == "") return;
 
         Report report = new Report();
-        report.salesReport(fromDateString,toDateString);
+        report.salesReport(fromDateString, toDateString);
+    }
+
+    private void displaySuppliers() {
+        loadSuppliers();
+        System.out.printf("\n\t" + "%-20s %-15s %-30s %n", "Name", "Phone", "Address");
+        for (Supplier sup : suppliers) {
+            System.out.printf("\t" + "%-20s %-15s %-30s %n", sup.getName(), sup.getPhone(), sup.getAddress());
+        }
+        pressToContinue();
     }
 
     private void editBulkSale() {
@@ -158,6 +167,29 @@ public class ManagerMenu extends Menu {
 
     }
 
+    private void editProductStockLevel() {
+        int option;
+        do {
+            loadProducts();
+            option = displayProductsInput(products, "Available Products", true);
+            if (option == products.size()) {
+                break;
+            } else if (option < 0) {
+                invalidOptionMessage();
+                pressToContinue();
+                return;
+            }
+            Product pr = products.get(option);
+            String message = pr.getName() + " old stock level is " + pr.getStockLevel() + ", enter new stock level";
+            double newPrice = displayDoubleInputMessage(message);
+            if (!pr.setStockLevel(newPrice))
+                break;
+            System.out.println("\tStock level updated successfully 👍!");
+            pressToContinue();
+            return;
+        } while (true);
+    }
+
     private void editProductPrice() {
         int option;
         do {
@@ -173,8 +205,11 @@ public class ManagerMenu extends Menu {
             Product pr = products.get(option);
             String message = pr.getName() + " old price is " + pr.getProductPrice() + ", enter new price";
             double newPrice = displayDoubleInputMessage(message);
-            if (!pr.editUnitPrice(newPrice))
+            if (!pr.editUnitPrice(newPrice)) {
+                pressToContinue();
                 break;
+            }
+
             System.out.println("\tPrice updated successfully 👍!");
             pressToContinue();
             return;
@@ -182,19 +217,50 @@ public class ManagerMenu extends Menu {
         } while (true);
     }
 
+    private void editReplenishLevel() {
+        int option;
+        do {
+            loadProducts();
+            option = displayProductsInput(products, "Available Products", true);
+            if (option == products.size()) {
+                break;
+            } else if (option < 0) {
+                invalidOptionMessage();
+                pressToContinue();
+                return;
+            }
+            Product pr = products.get(option);
+            String message = pr.getName() + " old replenish level is " + pr.getReplenishLevel() + ", enter new replenish level";
+            double newPrice = displayDoubleInputMessage(message);
+            if (!pr.setReplenishLevel(newPrice)) {
+                pressToContinue();
+                break;
+            }
+
+            System.out.println("\tReplenish level updated successfully 👍!");
+            pressToContinue();
+            return;
+
+        } while (true);
+    }
+
+
     public void display() {
         int option = 0;
         do {
             System.out.println("\n\n\t\t\tWelcome " + employee.getName());
-            System.out.printf("\t %-50s %-2s %n", "Place purchase prder", "0");
-            System.out.printf("\t %-50s %-2s %n", "Edit product price (promotion)", "1");
-            System.out.printf("\t %-50s %-2s %n", "New bulk sale discount", "2");
-            System.out.printf("\t %-50s %-2s %n", "Edit bulk sale discount", "3");
-            System.out.printf("\t %-50s %-2s %n", "Remove bulk sale discount", "4");
-            System.out.printf("\t %-50s %-2s %n", "Sales report", "5");
-            System.out.printf("\t %-50s %-2s %n", "Supply report", "6");
-            System.out.printf("\t %-50s %-2s %n", "Best selling report", "7");
-            System.out.printf("\t %-50s %-2s %n", "Exit", "8");
+            System.out.printf("\t %-50s %-2s %n", "Place purchase order", "0");
+            System.out.printf("\t %-50s %-2s %n", "List suppliers", "1");
+            System.out.printf("\t %-50s %-2s %n", "Edit stock level", "2");
+            System.out.printf("\t %-50s %-2s %n", "Edit replenish level", "3");
+            System.out.printf("\t %-50s %-2s %n", "Edit product price (promotion)", "4");
+            System.out.printf("\t %-50s %-2s %n", "New bulk sale discount", "5");
+            System.out.printf("\t %-50s %-2s %n", "Edit bulk sale discount", "6");
+            System.out.printf("\t %-50s %-2s %n", "Remove bulk sale discount", "7");
+            System.out.printf("\t %-50s %-2s %n", "Sales report", "8");
+            System.out.printf("\t %-50s %-2s %n", "Supply report", "9");
+            System.out.printf("\t %-50s %-2s %n", "Best selling report", "10");
+            System.out.printf("\t %-50s %-2s %n", "Exit", "11");
             System.out.println(String.format("%n\t%-53s%n", " ").replace(" ", "*"));
             System.out.print("\tYour choice : ");
 
@@ -207,22 +273,28 @@ public class ManagerMenu extends Menu {
             if (option == 0) {
                 placePurchaseOrder();
             } else if (option == 1) {
-                editProductPrice();
+                displaySuppliers();
             } else if (option == 2) {
-                newBulkSale();
+                editProductStockLevel();
             } else if (option == 3) {
-                editBulkSale();
+                editReplenishLevel();
             } else if (option == 4) {
-                removeBulkSale();
+                editProductPrice();
             } else if (option == 5) {
-                salesReport();
+                newBulkSale();
             } else if (option == 6) {
+                editBulkSale();
+            } else if (option == 7) {
+                removeBulkSale();
+            } else if (option == 8) {
+                salesReport();
+            } else if (option == 9) {
                 Report report = new Report();
                 report.supplyReport();
-            } else if (option == 7) {
+            } else if (option == 10) {
                 Report report = new Report();
                 report.bestSellingReport();
-            } else if (option == 8) {
+            } else if (option == 11) {
                 System.exit(0);
             }
         } while (true);

@@ -42,7 +42,7 @@ public class Product {
         if (!request.getBody().isArray()) {
             JSONObject json = request.getBody().getObject();
             if (json.has("error"))
-                System.err.println("\t"+json.getJSONObject("error").getString("message"));
+                System.out.println("\t"+json.getJSONObject("error").getString("message"));
             return null;
         }
         JSONObject json = request.getBody().getObject();
@@ -66,7 +66,7 @@ public class Product {
         if (!request.getBody().isArray()) {
             JSONObject json = request.getBody().getObject();
             if (json.has("error"))
-                System.err.println(json.getJSONObject("error").getString("message"));
+                System.out.println(json.getJSONObject("error").getString("message"));
             return null;
         }
         return JsonParser.parseProducts(request.getBody().getArray());
@@ -108,11 +108,11 @@ public class Product {
         // retrieve the parsed JSONObject from the response
         JSONObject json = request.getBody().getObject();
         if (json.has("error")) {
-            System.err.println("\t"+json.getJSONObject("error").getString("message"));
+            System.out.println("\t"+json.getJSONObject("error").getString("message"));
             return false;
         }
         if (json.getJSONObject("product") == null) {
-            System.err.println("could not edit product's price");
+            System.out.println("could not edit product's price");
             return false;
         }
         json = json.getJSONObject("product");
@@ -146,11 +146,11 @@ public class Product {
         // retrieve the parsed JSONObject from the response
         JSONObject json = request.getBody().getObject();
         if (json.has("error")) {
-            System.err.println(json.getJSONObject("error").getString("message"));
+            System.out.println(json.getJSONObject("error").getString("message"));
             return false;
         }
         if (json.getJSONObject("product") == null) {
-            System.err.println("could not edit product's stock level");
+            System.out.println("could not edit product's stock level");
             return false;
         }
         json = json.getJSONObject("product");
@@ -197,11 +197,11 @@ public class Product {
         // retrieve the parsed JSONObject from the response
         JSONObject json = request.getBody().getObject();
         if (json.has("error")) {
-            System.err.println(json.getJSONObject("error").getString("message"));
+            System.out.println(json.getJSONObject("error").getString("message"));
             return false;
         }
         if (json.getJSONObject("product") == null) {
-            System.err.println("could not edit product's replenish level");
+            System.out.println("could not edit product's replenish level");
             return false;
         }
         json = json.getJSONObject("product");
@@ -230,11 +230,11 @@ public class Product {
         // retrieve the parsed JSONObject from the response
         JSONObject json = request.getBody().getObject();
         if (json.has("error")) {
-            System.err.println(json.getJSONObject("error").getString("message"));
+            System.out.println(json.getJSONObject("error").getString("message"));
             return false;
         }
         if (json.getJSONObject("discount") == null) {
-            System.err.println("could not edit discount");
+            System.out.println("could not edit discount");
             return false;
         }
         json = json.getJSONObject("discount");
@@ -262,11 +262,11 @@ public class Product {
         // retrieve the parsed JSONObject from the response
         JSONObject json = request.getBody().getObject();
         if (json.has("error")) {
-            System.err.println(json.getJSONObject("error").getString("message"));
+            System.out.println(json.getJSONObject("error").getString("message"));
             return false;
         }
         if (json.getJSONObject("responce") == null) {
-            System.err.println("could not delete discount");
+            System.out.println("could not delete discount");
             return false;
         }
         discounts.remove(discounts);
@@ -296,11 +296,11 @@ public class Product {
         // retrieve the parsed JSONObject from the response
         JSONObject json = request.getBody().getObject();
         if (json.has("error")) {
-            System.err.println(json.getJSONObject("error").getString("message"));
+            System.out.println(json.getJSONObject("error").getString("message"));
             return false;
         }
         if (json.getJSONObject("responce") == null) {
-            System.err.println("could not add discount");
+            System.out.println("could not add discount");
             return false;
         }
 

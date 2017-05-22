@@ -13,16 +13,16 @@ public class OrderItem extends Item {
     }
 
     public OrderItem(Product p, int qty) {
-	super(qty, p);
+        super(qty, p);
     }
 
     public double getTotal() {
-	return total;
+        return total;
     }
 
     public void setTotal(double total) {
-	this.total = total;
+        this.total = total;
     }
-    
-    
+
+
 }

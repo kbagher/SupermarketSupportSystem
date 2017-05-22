@@ -26,6 +26,11 @@ public class Order {
         this.customer = customer;
     }
 
+    public Order() {
+
+    }
+
+
     public boolean createNewOrder() throws UnirestException {
         HttpResponse<JsonNode> request = null;
         request = Unirest.post("http://localhost/supermarket/api.php/order/add").header("accept", "application/json")

@@ -221,6 +221,9 @@ class product
      */
         public function editReplenishLevel($product_id,$level)
     {
+        if($level <0)
+            throw new RestException(400, "invalid replenish level");
+
         $con = mysqli_connect('localhost', 'root', '', 'supermarket');
         $con->set_charset("utf8");
         $result = mysqli_query($con, "update product set prod_replenish_level = $level where prod_id=$product_id ");
@@ -238,6 +241,9 @@ class product
      */
     public function editStockLevel($product_id,$level)
     {
+        if ($level<0)
+            throw new RestException(400, "invalid stock level");
+
         $con = mysqli_connect('localhost', 'root', '', 'supermarket');
         $con->set_charset("utf8");
         $result = mysqli_query($con, "update product set prod_stock_level = $level where prod_id=$product_id ");
