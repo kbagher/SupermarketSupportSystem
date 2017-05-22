@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * Created by kassem on 22/5/17.
  */
-public class RemoveItem {
+public class TestRemoveItem {
 
 
     @org.junit.BeforeClass
@@ -32,7 +32,6 @@ public class RemoveItem {
                 break;
             }
         }
-
         assertNotNull(itm);
         assertTrue(or.removeProduct(itm));
     }
