@@ -143,7 +143,9 @@ public class Customer {
 
     /**
      * @param subtotal
+     *
      * @return
+     *
      * @deprecated deducted on API
      */
     public boolean deductPoints(double subtotal) {

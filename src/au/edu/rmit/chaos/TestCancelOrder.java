@@ -13,21 +13,21 @@ public class TestCancelOrder {
     @Test
     public void orderNotExist() throws Exception {
         Order or = new Order();
-        or.getOrderByID(99999);
+        or.getOrderByID(-1);
         assertFalse(or.cancelOrder());
     }
 
     @Test
     public void orderAlreadyCanceled() throws Exception {
         Order or = new Order();
-        or.getOrderByID(176);
+        or.getOrderByID(96);
         assertFalse(or.cancelOrder());
     }
 
     @Test
     public void cancelOrder() throws Exception {
         Order or = new Order();
-        or.getOrderByID(50);
+        or.getOrderByID(166);
         assertTrue(or.cancelOrder());
     }
 

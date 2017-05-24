@@ -13,8 +13,8 @@ public class TestPurchaseOrder {
     static Employee emp;
 
     @org.junit.BeforeClass
-    public static void init(){
-        emp = new Employee("kim","kim");
+    public static void init() {
+        emp = new Employee("kim", "kim");
     }
 
     @org.junit.Test
@@ -25,11 +25,11 @@ public class TestPurchaseOrder {
 
         ArrayList<Product> products = alde.getSupplierProducts();
 
-        Product product = products.get(0);
+        Product product = products.get(1);
 
-        PurchaseOrder pr = new PurchaseOrder(alde,emp);
+        PurchaseOrder pr = new PurchaseOrder(alde, emp);
 
-        pr.addProduct(product,1);
+        pr.addProduct(product, 500);
 
         assertTrue(pr.placeOrder());
     }
@@ -44,9 +44,10 @@ public class TestPurchaseOrder {
 
         Product product = products.get(0);
 
-        PurchaseOrder pr = new PurchaseOrder(alde,emp);
+        PurchaseOrder pr = new PurchaseOrder(alde, emp);
 
-        pr.addProduct(product,-1);
+        // invalid quantity
+        pr.addProduct(product, -1);
 
         assertFalse(pr.placeOrder());
     }

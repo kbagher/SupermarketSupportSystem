@@ -6,24 +6,24 @@ public class Discount {
     private int quantity;
 
     public Discount(double percentage, int quantity) {
-	this.percentage = percentage;
-	this.quantity = quantity;
+        this.percentage = percentage;
+        this.quantity = quantity;
     }
 
     public double getPercentage() {
-	return percentage;
+        return percentage;
     }
 
     public void setPercentage(double percentage) {
-	this.percentage = percentage;
+        this.percentage = percentage;
     }
 
     public double getQuantity() {
-	return quantity;
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
-	this.quantity = quantity;
+        this.quantity = quantity;
     }
 
 }

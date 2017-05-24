@@ -13,8 +13,8 @@ public class TestPlaceOrder {
     static Customer customer;
 
     @org.junit.BeforeClass
-    public static void init(){
-        customer = new Customer("kassem","kassem123",true);
+    public static void init() {
+        customer = new Customer("kassem", "kassem123", true);
     }
 
     @org.junit.Test
@@ -33,12 +33,13 @@ public class TestPlaceOrder {
                 break;
             }
         }
-        or.addProduct(pr,10);
-        assertEquals(or.placeOrder(),OrderStatus.placed);
+        or.addProduct(pr, 10);
+        assertEquals(or.placeOrder(), OrderStatus.placed);
     }
 
     @org.junit.Test
     public void placeOrderInsufficientBalance() throws Exception {
+
         Order or = new Order(customer);
 
         or.createNewOrder();
@@ -53,8 +54,8 @@ public class TestPlaceOrder {
                 break;
             }
         }
-        or.addProduct(pr,40);
-        assertEquals(or.placeOrder(),OrderStatus.insufficient_balance);
+        or.addProduct(pr, 40);
+        assertEquals(or.placeOrder(), OrderStatus.insufficient_balance);
     }
 
 

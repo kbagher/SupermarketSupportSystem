@@ -25,7 +25,7 @@ public class Company {
     private static Scanner scan;
 
 
-    private static char displayMainMenu() throws Exception{
+    private static char displayMainMenu() throws Exception {
         System.out.println("\n\n\t\tSupermarket Support System\n");
         System.out.println("\tCustomer				0");
         System.out.println("\tEmployee				1");
@@ -38,7 +38,7 @@ public class Company {
 
     public static void main(String args[]) {
         Company comp = new Company();
-        char c=0;
+        char c = 0;
         do {
 
             try {

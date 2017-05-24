@@ -20,7 +20,7 @@ public class TestRemoveItem {
     @Test
     public void removeItem() throws Exception {
         Order or = new Order();
-        or.getOrderByID(122);
+        or.getOrderByID(190);
 
         ArrayList<OrderItem> items = or.getOrderItems();
 

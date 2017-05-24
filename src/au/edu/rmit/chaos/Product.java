@@ -25,12 +25,12 @@ public class Product {
         updateProductInfo(id, name, unitPrice, stockLevel, replenishLevel, type, discounts);
     }
 
-    public static Product getProductDetails(int productID){
+    public static Product getProductDetails(int productID) {
         HttpResponse<JsonNode> request = null;
         try {
             request = Unirest
                     .get("http://localhost/supermarket/api.php/product/{id}")
-                    .routeParam("id",Integer.toString(productID))
+                    .routeParam("id", Integer.toString(productID))
                     .header("accept", "application/json")
                     .queryString("key", "519428fdced64894bb10cd90bd87167c")
                     .asJson();
@@ -42,7 +42,7 @@ public class Product {
         if (!request.getBody().isArray()) {
             JSONObject json = request.getBody().getObject();
             if (json.has("error"))
-                System.out.println("\t"+json.getJSONObject("error").getString("message"));
+                System.out.println("\t" + json.getJSONObject("error").getString("message"));
             return null;
         }
         JSONObject json = request.getBody().getObject();
@@ -108,7 +108,7 @@ public class Product {
         // retrieve the parsed JSONObject from the response
         JSONObject json = request.getBody().getObject();
         if (json.has("error")) {
-            System.out.println("\t"+json.getJSONObject("error").getString("message"));
+            System.out.println("\t" + json.getJSONObject("error").getString("message"));
             return false;
         }
         if (json.getJSONObject("product") == null) {

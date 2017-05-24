@@ -28,7 +28,8 @@ import java.util.List;
  */
 public class Report {
 
-   protected String name;
+    protected String name;
+
     private ArrayList<Supply> fetchSupplyFromServer() {
         HttpResponse<JsonNode> request = null;
         try {
