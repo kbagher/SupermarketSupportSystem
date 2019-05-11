@@ -1,5 +1,4 @@
 # Supermarket Support System
-### RMIT Chaos Team
 ____
 - **Architecture**
 	- Server side
